@@ -1,28 +1,332 @@
 <!DOCTYPE html>
-<html>
-	<head>
-		<title>Hank Quinlan, Horrible Cop</title>
-	</head>
-	<body>
-		<nav>
-    		<ul>
-        		<li><a href="/">Home</a></li>
-	        	<li><a href="/about">About</a></li>
-        		<li><a href="/cv">CV</a></li>
-        		<li><a href="/blog">Blog</a></li>
-    		</ul>
-		</nav>
-		<div class="container">
-    		<div class="blurb">
-        		<h1>Hi there, I'm Hank Quinlan!</h1>
-				<p>I'm best known as the horrible cop from <em>A Touch of Evil</em> Don't trust me. <a href="/about">Read more about my life...</a></p>
-    		</div><!-- /.blurb -->
-		</div><!-- /.container -->
-		<footer>
-    		<ul>
-        		<li><a href="mailto:hankquinlanhub@gmail.com">email</a></li>
-        		<li><a href="https://github.com/hankquinlan">github.com/hankquinlan</a></li>
-			</ul>
-		</footer>
-	</body>
-</html
+<!-- saved from url=(0033)https://mlafeldt.github.io/about/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us" hola_ext_inject="disabled"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <script type="text/javascript" async="" src="./docfiles/ga.js"></script><script type="text/javascript">
+    var enforce = "xcv";
+    if ((enforce == window.location.host) && (window.location.protocol != "https:"))
+      window.location.protocol = "https";
+  </script>
+  
+
+  <meta charset="utf-8">
+  <title>
+    
+ SPECTRA: Continuous Query Processing for RDF Graph Streams Over Sliding Windows
+  </title>
+
+  <meta name="author" content="spectra">
+  <meta name="description" content="Documentation of SPECTRA">
+
+  
+  <link rel="stylesheet" href="./docfiles/base.css" type="text/css" media="screen, projection">
+  <link rel="stylesheet" href="./docfiles/pygments.css" type="text/css">
+  <link media="only screen and (max-device-width: 480px)" href="./docfiles/iphone.css" type="text/css" rel="stylesheet">
+  <link media="only screen and (device-width: 768px)" href="./docfiles/iphone.css" type="text/css" rel="stylesheet">
+  <link href="./docfiles/css" rel="stylesheet" type="text/css">
+
+ <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37141557-1']);
+    _gaq.push(['_gat._anonymizeIp']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script><style type="text/css"></style>
+
+
+</head><div id="HrhEco6jHYxUgPFIk4oBi" class="BUyuF_Ytyeh7sJKYYfQ" style="display: none;"></div><div id="qHFQlNGwdULgQWE8t7" class="BUyuF_Ytyeh7sJKYYfQ" style="display: none;"></div><div id="TzWAXFNwt1cTxHbf3ihzKYMi" class="BUyuF_Ytyeh7sJKYYfQ" style="display: none;"></div>
+
+<body>
+  <div id="container">
+    <section class="sidebar">
+     
+        <img src="./docfiles/spectra.png" height="100" width="100" class="avatar">
+      </a>
+
+      <section class="name">
+       
+          <span id="fname"></span>
+          <span id="lname"></span>
+        </a>
+      </section>
+
+      <section class="meta">
+       
+       
+      </section>
+
+      <section class="sections">
+        <ul>
+          
+        </ul>
+      </section>
+    </section>
+
+    <section class="content">
+  <h1>Title: SPECTRA: Continuous Query Processing for RDF Graph Streams Over Sliding Windows </h1>
+    <h2>Paper ID: 36</h2>
+   <h2>Authors: Syed Gillani, Gauthier Picard, and Frederique Laforest</h2>
+  <section class="byline"></section>
+ <i> While our publication is under review, access of our system is restricted to the reviewers. We will open this website for public access after publication. Thus, repeatability and comparison will be available for the general community. </i>
+ <h1> Overview</h1>
+  <p> Our goal is to make both offline and online application of RDF graph stream processing as simple as possible for other users. This allows them to easily apply SPECTRA to their own data streams and facilitates reproduction of our evaluation. Therefore, we provide an easy-to-run executable of our implementation: </p>
+
+<p>We have implemented our system in Java, which means it can simply be run on the Java Virtual Machine <b>(requirement: 64-bit JDK 8 or higher version)</b>. We wanted to make sure that users do not have to install any third party libraries. Therefore, we have packaged our system with all necessary dependencies including the complete query parser, input file parser and both query engines. This explains the large size of the JAR. Our system accept the input stream file of the Nx format, where x = Triples or Quads . For more details see the specification for the <a href="https://www.w3.org/TR/n-quads/">NQuads format</a>, a extension for the <a href="http://www.w3.org/TR/rdf-testcases/#ntriples">N-Triples</a> RDF format. Note that the parser handles any combination (cf. <a href="http://www.w3.org/TR/rdf11-concepts/#section-generalized-rdf">generalised triples</a> or number of N-Triples syntax terms on each line (the number of terms per line can also vary). 
+
+</p>
+
+<p> The downloaded folder contains the followings: (i) a jar <a href="./" >file</a>, (ii) a <a href="./testData/" >folder</a> containing the testData, (iii) a <a href="./testQueries/" >folder</a>  containing the test queries, and (iv) a  <a href="./result/" >folder</a> to store the matched results <br>
+
+  Our implementation is a command-line application with the following usage:</p>
+<p><code>Usage: java -jar spectra.jar [-es &#60;INT&#62;] [-et &#60;INT&#62;] [-f &#60;STRING&#62;] [-q &#60;STRING&#62;] [-w &#60;INT&#62;]<br>
+
+-es,--eventSize &#60;arg&#62;   # of Triples in each Event<br>
+
+
+ -et,--evalType &#60;arg&#62;    Evaluation Type, 1: For Event-based Evalution, 2: For Incremental Evalution<br>
+
+
+ -f,--file &#60;arg&#62;         Input Stream File in NTriple format<br>
+
+
+ -h,--help               show help.<br>
+
+
+ -q,--query &#60;arg&#62;        Input Query File<br>
+
+
+ -w,--window &#60;arg&#62;       Window in Seconds </code></p>
+
+
+
+
+<p><br>An Example of the usage is as follows:<br> <code>java -jar spectra.jar -f /home/user/testData/snb.nt -q /home/user/testQueries/SNBQ1.q -es 10 -r 5 -s 2</code></p>
+
+<p> The first option describes how many triples should be parsed into one event. Then we have paths for the input file and query, finally the range and slide options describe the size of the window and the slide granularity in seconds. The output matches are stored in the <code>./result/queryresults.txt</code>. The folder named <code>./result</code> should be placed in the same directory of the jar </p>
+<p>Note:  For large reservoir sizes, it makes sense to increase the JVM heap size (eg. <code>-Xmx4096M</code>) and use a concurrent garbage collector (<code>-XX:+UseConcMarkSweepGC</code>) since the concept of repeated creation/destroying of event-data may pose a challenge to garbage collection.
+<p>
+
+   <h1> LUBM Queries</h1>
+  <p>  <h3>Q1</h3> <br>
+    <code> 
+  prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;<br>
+                     prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;<br>
+                   
+                    prefix ub: &lt;http://swat.cse.lehigh.edu/onto/univ-bench.owl#&gt;<br>
+
+                     prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>
+
+                    
+
+                     SELECT ?y ?z ?x WHERE <br>
+
+                    { <br>
+                           ?z ub:subOrganizationOf ?y . <br>
+                
+                      ?x ub:memberOf ?z . <br>
+              
+               ?x ub:undergraduateDegreeFrom ?y . <br>
+               
+              ?x rdf:type ub:GraduateStudent . <br>
+               ?y rdf:type ub:University . <br>
+                ?z rdf:type ub:Department . <br>
+                    
+                    }
+
+  </code> </p>
+
+  <p>  <h3>Q2</h3> <br>
+    <code> 
+  prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;<br>
+                     prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;<br>
+                   
+                    prefix ub: &lt;http://swat.cse.lehigh.edu/onto/univ-bench.owl#&gt;<br>
+
+                     prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>
+
+                   SELECT ?y ?x WHERE <br>
+
+                    { <br>
+                 ?x rdf:type ub:Course . <br>
+                ?x ub:name ?y . <br>
+                    
+                    }
+                    
+                    
+
+  </code> </p>
+
+   <p>  <h3>Q3</h3> <br>
+    <code> 
+  prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;<br>
+                     prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;<br>
+                   
+                    prefix ub: &lt;http://swat.cse.lehigh.edu/onto/univ-bench.owl#&gt;<br>
+
+                     prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>
+
+                   SELECT ?y ?x ?z WHERE <br>
+
+                    {  ?x ub:memberOf ?z . <br>
+              ?z ub:subOrganizationOf ?y . <br>
+            ?x ub:undergraduateDegreeFrom ?y .<br>
+            ?x rdf:type ub:UndergraduateStudent.<br>
+               ?y rdf:type ub:University . <br>
+              ?z rdf:type ub:Department .<br>
+                    
+                    }
+                    
+                    
+
+  </code> </p>
+     <p>  <h3>Q4</h3> <br>
+    <code> 
+  prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;<br>
+                     prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;<br>
+                   
+                    prefix ub: &lt;http://swat.cse.lehigh.edu/onto/univ-bench.owl#&gt;<br>
+
+                     prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>
+
+                   SELECT ?x ?y1 WHERE <br>
+
+                    {  ?x ub:worksFor ?k .<br>
+      
+         ?x ub:name ?y1 . <br>
+        ?x ub:emailAddress ?y2 .<br>
+         ?x ub:telephone ?y3 .<br>
+   ?x rdf:type ub:FullProfessor . <br>
+         Filter(?k =  &lt;http://www.Department1.University0.edu&gt; )
+                    
+                    }
+                    
+                    
+
+  </code> </p>
+
+
+   <p>  <h3>Q5</h3> <br>
+    <code> 
+  prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;<br>
+                     prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;<br>
+                   
+                    prefix ub: &lt;http://swat.cse.lehigh.edu/onto/univ-bench.owl#&gt;<br>
+
+                     prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>
+
+                   SELECT ?x  WHERE <br>
+
+                    {  ?x ub:subOrganizationOf ?k .<br>
+
+                ?x rdf:type ub:ResearchGroup .<br>
+                    
+                   Filter (?k = &lt;http://www.Department1.University0.edu&gt;)
+                    }
+                    
+                    
+
+  </code> </p>
+
+  <p>  <h3>Q6</h3> <br>
+    <code> 
+  prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;<br>
+                     prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;<br>
+                   
+                    prefix ub: &lt;http://swat.cse.lehigh.edu/onto/univ-bench.owl#&gt;<br>
+
+                     prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>
+
+                   SELECT ?x ?y  WHERE <br>
+
+                    {  ?x ub:worksFor ?y .<br>
+          ?y ub:subOrganizationOf  ?k. <br>
+        ?y rdf:type ub:Department . <br>
+         
+        ?x rdf:type ub:FullProfessor .<br>
+
+        Filter (?k = &lt;http://www.University0.edu&lt;)
+                    }
+                    
+                    
+
+  </code> </p>
+
+  <p>  <h3>Q7</h3> <br>
+    <code> 
+  prefix rdfs: &lt;http://www.w3.org/2000/01/rdf-schema#&gt;<br>
+                     prefix xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;<br>
+                   
+                    prefix ub: &lt;http://swat.cse.lehigh.edu/onto/univ-bench.owl#&gt;<br>
+
+                     prefix rdf: &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;<br>
+
+                   SELECT ?x ?y ?z WHERE <br>
+
+                    {  <br>
+                     ?y ub:teacherOf ?z . <br>
+        ?x ub:takesCourse ?z. <br>
+       ?x ub:advisor ?y .<br>
+        
+           ?z rdf:type ub:Course .<br>
+       ?x rdf:type ub:UndergraduateStudent . <br>
+     
+        ?y rdf:type ub:FullProfessor .<br>
+                    }
+                    
+                    
+
+  </code> </p>
+
+
+<h1> SEAS Queries</h1>
+<p>  <h3>Q1</h3> <br>
+    <code> 
+  prefix seas: &lt;http://purl.org/NET/seas#&gt;<br>
+prefix m: &lt;http://purl.org/NET/seas/measures#&gt;<br>
+SELECT * WHERE <br>
+{ <br>
+  ?obs m:V_RMS ?rm. <br>
+  ?obs m:V_THD ?thd.<br>
+   ?obs m:V_CF ?cf. <br>
+   ?obs m:W ?watt.<br>
+    ?obs m:Wh ?watth. <br>
+    ?obs m:DPF ?vah. <br>
+  }
+                    
+                    
+
+  </code> </p>
+
+  <p>  <h3>Q2</h3> <br>
+    <code> 
+  prefix seas: &lt;http://purl.org/NET/seas#&gt;<br>
+prefix m: &lt;http://purl.org/NET/seas/measures#&gt;<br>
+SELECT * WHERE <br>
+{ <br>
+  ?obs m:V_RMS ?rm. <br>
+  ?obs m:V_THD ?thd.<br>
+   ?obs m:V_CF ?cf. <br>
+   ?obs m:W ?watt.<br>
+    ?obs m:Wh ?watth. <br>
+    ?obs m:DPF ?vah. <br>
+    Filter( ?watt &gt; 10 &amp;&amp; ?cf &lt; 1.2)
+  }
+                    
+                    
+
+  </code> </p>
+</section>
+
+  </div> <!-- container -->
+
+
+
+</body></html>
